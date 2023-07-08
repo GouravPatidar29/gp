@@ -1,0 +1,140 @@
+#include<stdio.h>  
+#include <string.h>    
+struct vehicle      
+{
+    char number[20];      
+}bus[10],cycle[10],car[10]; 
+int  busCount = 0 ,carCount = 0, cycleCount = 0 , Totalamount;
+void display();
+void find();
+int main()    
+{    
+  int option ;
+  printf("\n 1.Bus");
+  printf("\n 2.Car");
+  printf("\n 3.Cycle");
+  printf("\n 4.Display Detalis");
+  printf("\n 5.FInd Details");
+  printf("\n Press any key fot exit except menu items");
+  do
+  {
+       printf("\n Please enter your choice  ");  
+       scanf("%d",&option);
+       switch(option)
+       
+   {
+       case 1:
+       if(busCount == 20){
+           printf("\n Bus parking is full");
+            break;
+       }
+       else{
+           printf("\n Enter the bus number : ");
+           scanf("%s",&bus[busCount].number);
+           Totalamount += 100;
+           busCount++;
+            break;
+       }
+       break;
+      case 2:
+       if(carCount == 20){
+           printf("\n Car parking is full : ");
+            break;
+       }
+       else{
+           printf("\n Enter the car number : ");
+           scanf("%s",&car[carCount].number);
+           Totalamount += 100;
+           carCount++;
+            break;
+       }
+       break;
+        case 3:
+       if(cycleCount == 20){
+           printf("\n Cycle parking is full");
+            break;
+       }
+       else{
+           printf("\n Enter the cycle number : ");
+           scanf("%s",&cycle[cycleCount].number);
+           Totalamount += 50;
+           cycleCount++;
+            break;
+       }
+       
+       case 4:
+       display();
+       break;
+       
+       case 5:
+	   find();
+	   break;
+
+   }
+  }while(option < 6);
+
+return 0;
+}
+void display(){
+    for(int  i = 0; i < busCount; i++){
+        printf("\n Bus %d=%s", i+1,bus[i].number);
+    }
+     for(int  i = 0; i < carCount; i++){
+        printf("\n Car %d=%s", i+1,car[i].number);
+    }
+     for(int  i = 0; i < cycleCount; i++){
+        printf("\n Cycle %d=%s", i+1,cycle[i].number);
+    }
+}
+
+ void find()
+ {
+  int option,i;
+  char number[10];
+  printf("\n1.Find bus by no");
+  printf("\n2.Find car by no");
+  printf("\n3.Find cycle by no");
+  printf("\n Enter your option ");
+  scanf("%d",&option);
+  switch(option)
+  {
+   case 1:
+	 printf("Enter the bus number ");
+	 scanf("%s",&number);
+	 for(i = 0; i <= busCount; i++)
+	  {
+	   if(strcmp(bus[i].number,number)==0)
+	   { printf("Bus Details are Available");
+	     return;
+	    }
+	  }
+	  printf("Detail not found");
+	  break;
+
+      case 2:
+    	 printf("Enter the car number ");
+    	 scanf("%s",&number);
+    	 for(i=0;i<=carCount;i++)
+    	  {
+    	   if(!strcmp(car[i].number,number))
+    	   { printf("Car details are Available");
+    	     return;
+    	    }
+    	  }
+    	  printf("detail not found");
+    	  break;
+       case 3:
+    	  printf("Enter the cycle no ");
+    	 scanf("%s",&number);
+    	 for(i = 0; i <= cycleCount; i++)
+    	  {
+    	   if(!strcmp(cycle[i].number,number))
+    	   { printf("Cycle details are Available");
+    	     return;
+    	    }
+    	  }
+    	  printf("Detail not found");
+		  break;
+
+  }
+ }
